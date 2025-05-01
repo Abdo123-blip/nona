@@ -1,0 +1,119 @@
+body {
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(to right, #f6c9e8, #e0c3fc);
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    color: #7a2e8f;
+    margin-bottom: 30px;
+    font-size: 36px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.img-card {
+    display: inline-block;
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    margin: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+    animation: bounceIn 1s ease-out;
+}
+
+.img-card:hover {
+    transform: scale(1.05);
+    background: #f4e1f5;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+img {
+    width: 220px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    transition: transform 0.3s;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+#descBox {
+    display: none;
+    background: rgba(255, 105, 180, 0.9);
+    color: white;
+    padding: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    text-align: center;
+    width: 320px;
+    font-size: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    z-index: 999;
+    animation: slideIn 0.5s ease-out;
+}
+
+#descBox button {
+    margin-top: 15px;
+    padding: 8px 15px;
+    background: #9b4d96;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+#descBox button:hover {
+    background: #7a2e8f;
+    transform: scale(1.1);
+}
+
+#descBox p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #fdfdfd;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -60%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

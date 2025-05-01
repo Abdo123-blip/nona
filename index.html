@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صوت و صورة حلوة</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(to right, #f6c9e8, #e0c3fc);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            color: #7a2e8f;
+            margin-bottom: 30px;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #introBox {
+            background: rgba(255, 105, 180, 0.9);
+            color: white;
+            padding: 25px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            text-align: center;
+            width: 320px;
+            font-size: 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+
+        #introBox button {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: #9b4d96;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        #introBox button:hover {
+            background: #7a2e8f;
+            transform: scale(1.1);
+        }
+
+        .img-card {
+            display: inline-block;
+            background: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            margin: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .img-card:hover {
+            transform: scale(1.05);
+            background: #f4e1f5;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        img {
+            width: 220px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        #descBox {
+            display: none;
+            background: rgba(255, 105, 180, 0.9);
+            color: white;
+            padding: 25px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            text-align: center;
+            width: 320px;
+            font-size: 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+
+        #descBox button {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: #9b4d96;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        #descBox button:hover {
+            background: #7a2e8f;
+            transform: scale(1.1);
+        }
+
+        #descBox p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #fdfdfd;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>أهلاً بك، احببت أن تبدأي بالاستماع إلى أغنيتك المفضلة 💖</h1>
+
+    <div id="introBox">
+        <h2>اضغطي على الزر لتسمعي أغنية "My Heart Will Go On" في الخلفية</h2>
+        <button onclick="startMusic()">ابدأي 💖</button>
+    </div>
+
+    <!-- Hidden Audio Player -->
+    <audio id="backgroundAudio" loop>
+        <source src="Céline Dion - My Heart Will Go On (Official 25th Anniversary Alternate Music Video).mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Image Cards (example images with descriptions) -->
+    <div class="img-card">
+        <img src="bird.jpg" onclick="showDescription('العصفورة دي بريئة ورقيقة جدًا... زيك بالضبط، صوتها هادي بس بيسيب أثر، وجمالها طبيعي مش محتاج شرح.')">
+    </div>
+    <div class="img-card">
+        <img src="sea.jpg" onclick="showDescription('البحر ده مش بس واسع، هو كمان مليان تفاصيل مخفية... بالضبط زي قلبك، هادي من بره، عميق من جوه.')">
+    </div>
+    <div class="img-card">
+        <img src="white.jpg" onclick="showDescription('اللون الأبيض نضيف وبريء... زي حضورك، يدي راحة وأمان في أي مكان.')">
+    </div>
+    <div class="img-card">
+        <img src="winter.jpg" onclick="showDescription('الشتا مزاجي شوية، بس دافي بمشاعره... نفس الإحساس اللي بتحس بيه لما تكون حوالي ناس بتحبهم.')">
+    </div>
+    <div class="img-card">
+        <img src="yasmin.jpg" onclick="showDescription('الياسمين ريحته تهدي القلب... وجودك كده، بسيط بس يخلي الدنيا أجمل.')">
+    </div>
+    <div class="img-card">
+        <img src="pizza.jpg" onclick="showDescription('البيتزا فيها ألف طعم، وكل طعم حكاية... كأنك بتجمعي بين البساطة والعمق، ومافيش حد بيقاومك.')">
+    </div>
+    <div class="img-card">
+        <img src="manga.jpg" onclick="showDescription('عصير المانجا؟ حلو وسهل تحبه... زي طريقتك اللي تريح القلب بدون مجهود.')">
+    </div>
+    <div class="img-card">
+        <img src="dory.jpg" onclick="showDescription('دوري؟ بتحاول تفتكر، بتضحك، ودايمًا طيبة... مش كاملة بس جميلة بطريقتها.')">
+    </div>
+    <div class="img-card">
+        <img src="camera.jpg" onclick="showDescription('الكاميرا بتحب التفاصيل... زيك، بتحبي تشوفي الجمال اللي محدش بياخد باله منه.')">
+    </div>
+
+    <div id="descBox">
+        <p id="descText"></p>
+        <button onclick="hideDescription()">إغلاق</button>
+    </div>
+
+    <script>
+        function startMusic() {
+            const introBox = document.getElementById('introBox');
+            const audio = document.getElementById('backgroundAudio');
+            
+            // Hide the intro box
+            introBox.style.display = 'none';
+            
+            // Play the background music
+            audio.play();
+        }
+
+        function showDescription(text) {
+            document.getElementById('descText').innerText = text;
+            document.getElementById('descBox').style.display = 'block';
+        }
+
+        function hideDescription() {
+            document.getElementById('descBox').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
